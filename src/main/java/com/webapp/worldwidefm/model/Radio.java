@@ -20,8 +20,12 @@ public class Radio {
     @JsonProperty("url_resolved")
     private String urlResolved;
 
+    @JsonProperty("geo_lat")
     private Double latitude;
+
+    @JsonProperty("geo_long")
     private Double longitude;
+
     private Integer bitrate;
     private String codec;
     private String favicon;

@@ -7,6 +7,7 @@ import org.springframework.web.reactive.function.client.WebClient;
 import reactor.core.publisher.Mono;
 
 import java.util.List;
+import java.util.Map;
 
 @Component
 public class RadioBrowserClient {
@@ -20,19 +21,17 @@ public class RadioBrowserClient {
         this.webClient = webClient;
     }
 
-    public List<Radio> fetchByBoundingBox(Double north, Double south,
-                                          Double east, Double west,
-                                          Integer limit) {
-        return webClient.get()
-                .uri(baseUrl + "/stations/search", uriBuilder -> uriBuilder
-                        .queryParam("north", north)
-                        .queryParam("south", south)
-                        .queryParam("east", east)
-                        .queryParam("west", west)
-                        .queryParam("limit", limit)
-                        .queryParam("hidebroken", true)
-                        .queryParam("has_geo_info", true)
-                        .build())
+    public List<Radio> fetchAllWithGeoInfo() {
+        Map<String, Object> body = Map.of(
+                "has_geo_info", true,
+                "hidebroken", true,
+                "limit", 10100,
+                "offset", 0
+        );
+
+        return webClient.post()
+                .uri(baseUrl + "/stations/search")
+                .bodyValue(body)
                 .retrieve()
                 .bodyToFlux(Radio.class)
                 .collectList()

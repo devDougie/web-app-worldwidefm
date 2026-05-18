@@ -16,14 +16,8 @@ public class RadioController {
     private final RadioService radioService;
 
     @GetMapping("/radios")
-    public ResponseEntity<List<RadioResponseDTO>> getRadios(
-            @RequestParam Double north,
-            @RequestParam Double south,
-            @RequestParam Double east,
-            @RequestParam Double west,
-            @RequestParam(defaultValue = "100") Integer limit) {
-
-        List<RadioResponseDTO> radios = radioService.getRadiosByBoundingBox(north, south, east, west, limit);
+    public ResponseEntity<List<RadioResponseDTO>> getRadios() {
+        List<RadioResponseDTO> radios = radioService.getAllRadiosWithGeoInfo();
         return ResponseEntity.ok(radios);
     }
 

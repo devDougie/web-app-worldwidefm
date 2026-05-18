@@ -15,13 +15,12 @@ public class RadioService {
 
     private final RadioBrowserClient radioBrowserClient;
 
-    @Cacheable(value = "radios", key = "#north + ',' + #south + ',' + #east + ',' + #west + ',' + #limit")
-    public List<RadioResponseDTO> getRadiosByBoundingBox(Double north, Double south,
-                                                         Double east, Double west,
-                                                         Integer limit) {
-        List<Radio> radios = radioBrowserClient.fetchByBoundingBox(north, south, east, west, limit);
+    @Cacheable(value = "radios", key = "'all'")
+    public List<RadioResponseDTO> getAllRadiosWithGeoInfo() {
+        List<Radio> radios = radioBrowserClient.fetchAllWithGeoInfo();
 
         return radios.stream()
+                .filter(r -> r.getLatitude() != null && r.getLongitude() != null)
                 .map(RadioResponseDTO::from)
                 .toList();
     }

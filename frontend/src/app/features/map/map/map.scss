@@ -1,0 +1,25 @@
+:host {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+#map {
+  width: 100%;
+  height: 100%;
+}
+
+:host ::ng-deep .leaflet-container {
+  background: #0d0f17;
+}
+
+:host ::ng-deep .leaflet-tile {
+  filter:
+    invert(1)
+    hue-rotate(215deg)
+    brightness(0.75)
+    contrast(1);
+}
+
+// #0d0f17
+// #1c1f2e
