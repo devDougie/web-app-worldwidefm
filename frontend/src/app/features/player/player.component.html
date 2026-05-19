@@ -1,0 +1,24 @@
+<div class="player-bar" [class.visible]="audio.currentRadio()">
+
+    <div class="player-info">
+        <img *ngIf="audio.currentRadio()?.favicon" [src]="audio.currentRadio()?.favicon" class="player-favicon"
+            alt="favicon" (error)="$any($event.target).style.display='none'" />
+        <div class="player-text">
+            <span class="player-name">{{ audio.currentRadio()?.name || '—' }}</span>
+            <span class="player-meta">{{ audio.currentRadio()?.country || '—' }}</span>
+        </div>
+        <span class="player-badge" *ngIf="audio.isPlaying()">● AO VIVO</span>
+        <span class="player-badge error" *ngIf="audio.hasError()">⚠ Stream indisponível</span>
+        <span class="player-badge loading" *ngIf="audio.isLoading()">⏳ Conectando...</span>
+    </div>
+
+    <div class="player-controls">
+        <button class="player-btn" (click)="audio.isPlaying() ? audio.pause() : audio.resume()">
+            {{ audio.isPlaying() ? '⏸' : '▶' }}
+        </button>
+        <input type="range" min="0" max="1" step="0.05" [value]="audio.volume()" (input)="onVolumeChange($event)"
+            class="player-volume" />
+        <span class="player-volume-icon">🔊</span>
+    </div>
+
+</div>

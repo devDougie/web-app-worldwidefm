@@ -1,23 +1,26 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
-import { RadioService } from '../../../core/services/radio.service';
-import { Radio } from '../../../shared/models/radio.model';
+import { Component, OnInit, OnDestroy, inject } from '@angular/core';
+import { RadioService } from '../../core/services/radio.service';
+import { AudioService } from '../../core/services/audio.service';
+import { Radio } from '../../shared/models/radio.model';
 
-declare const L: any;  // ← usa o L do CDN via window
+declare const L: any;
 
 @Component({
   selector: 'app-map',
   standalone: true,
   imports: [],
-  templateUrl: './map.html',
-  styleUrl: './map.scss'
+  templateUrl: './map.component.html',
+  styleUrl: './map.component.scss'
 })
+
 export class Map implements OnInit, OnDestroy {
+
+  private radioService = inject(RadioService);
+  private audioService = inject(AudioService);
 
   private map!: any;
   private radios: Radio[] = [];
   private markerCluster!: any;
-
-  constructor(private radioService: RadioService) { }
 
   ngOnInit(): void {
     this.initMap();
@@ -98,7 +101,7 @@ export class Map implements OnInit, OnDestroy {
       const marker = L.marker([radio.latitude, radio.longitude], { icon });
       marker.bindTooltip(radio.name, { permanent: false, direction: 'top' });
       marker.on('click', () => {
-        console.log('Rádio selecionada:', radio.name, radio.stationuuid);
+        this.audioService.play(radio);
       });
       this.markerCluster.addLayer(marker);
     });

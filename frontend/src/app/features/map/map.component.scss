@@ -6,7 +6,7 @@
 
 #map {
   width: 100%;
-  height: 100%;
+  height: calc(100vh - 70px);
 }
 
 :host ::ng-deep .leaflet-container {
@@ -15,9 +15,9 @@
 
 :host ::ng-deep .leaflet-tile {
   filter:
-    invert(1)
-    hue-rotate(215deg)
-    brightness(0.75)
+    invert(1) 
+    hue-rotate(215deg) 
+    brightness(0.75) 
     contrast(1);
 }
 
