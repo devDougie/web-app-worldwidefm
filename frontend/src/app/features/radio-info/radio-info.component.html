@@ -1,0 +1,41 @@
+<div class="info-panel">
+    @if (audio.currentRadio()) {
+    <div class="radio-detail">
+        <div class="radio-cover">
+            @if (audio.currentRadio()?.favicon) {
+            <img [src]="audio.currentRadio()?.favicon" [alt]="audio.currentRadio()?.name"
+                (error)="$any($event.target).style.display='none'" />
+            }
+        </div>
+
+        <div class="radio-meta">
+            <h2 class="radio-name">{{ audio.currentRadio()?.name || '—' }}</h2>
+            <p class="radio-country">{{ audio.currentRadio()?.country || '—' }}</p>
+            @if (audio.currentRadio()?.city) {
+            <p class="radio-city">{{ audio.currentRadio()?.city }}</p>
+            }
+            @if (audio.currentRadio()?.tags) {
+            <p class="radio-tags">{{ audio.currentRadio()?.tags }}</p>
+            }
+            <div class="radio-specs">
+                @if (audio.currentRadio()?.codec) {
+                <span class="badge">{{ audio.currentRadio()?.codec }}</span>
+                }
+                @if (audio.currentRadio()?.bitrate) {
+                <span class="badge">{{ audio.currentRadio()?.bitrate }} kbps</span>
+                }
+            </div>
+        </div>
+
+        <button class="fav-btn" [class.is-fav]="favorites.isFavorite(audio.currentRadio()!.stationuuid)"
+            (click)="favorites.toggle(audio.currentRadio()!)"
+            [title]="favorites.isFavorite(audio.currentRadio()!.stationuuid) ? 'Remover dos favoritos' : 'Adicionar aos favoritos'">
+            {{ favorites.isFavorite(audio.currentRadio()!.stationuuid) ? '★' : '☆' }}
+        </button>
+    </div>
+    } @else {
+    <div class="empty-state">
+        <p>Clique em uma antena no mapa para ouvir uma rádio</p>
+    </div>
+    }
+</div>

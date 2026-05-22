@@ -1,0 +1,91 @@
+.info-panel {
+    padding: 16px;
+}
+
+.radio-detail {
+    position: relative;
+}
+
+.radio-cover {
+    width: 64px;
+    height: 64px;
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.05);
+    overflow: hidden;
+    margin-bottom: 12px;
+
+    img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+    }
+}
+
+.radio-name {
+    font-size: 15px;
+    font-weight: 600;
+    margin: 0 0 4px;
+    line-height: 1.3;
+    word-break: break-word;
+}
+
+.radio-country {
+    font-size: 12px;
+    opacity: 0.6;
+    margin: 0 0 2px;
+}
+
+.radio-city {
+    font-size: 12px;
+    opacity: 0.5;
+    margin: 0 0 8px;
+}
+
+.radio-tags {
+    font-size: 11px;
+    opacity: 0.45;
+    margin: 0 0 8px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.radio-specs {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+}
+
+.badge {
+    font-size: 10px;
+    padding: 2px 8px;
+    border-radius: 20px;
+    background: rgba(255, 255, 255, 0.08);
+    opacity: 0.7;
+}
+
+.fav-btn {
+    position: absolute;
+    top: 0;
+    right: 0;
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    color: #f5a623;
+    opacity: 0.5;
+    transition: opacity 0.2s;
+
+    &:hover,
+    &.is-fav {
+        opacity: 1;
+    }
+}
+
+.empty-state {
+    text-align: center;
+    padding: 40px 16px;
+    opacity: 0.4;
+    font-size: 13px;
+    line-height: 1.5;
+}

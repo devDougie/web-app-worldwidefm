@@ -108,4 +108,10 @@ export class Map implements OnInit, OnDestroy {
 
     console.log(`Marcadores renderizados: ${this.radios.length}`);
   }
+
+  navigateToRadio(radio: Radio): void {
+    if (this.map && radio.latitude && radio.longitude) {
+      this.map.setView([radio.latitude, radio.longitude], 10);
+    }
+  }
 }

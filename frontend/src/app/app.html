@@ -1,4 +1,6 @@
-<main class="app-layout">
-  <app-map></app-map>
-  <app-player></app-player>
-</main>
+<div class="app-layout">
+  <app-header />
+  <app-map />
+  <app-sidebar (navigateTo)="onNavigateTo($event)" />
+  <app-player />
+</div>

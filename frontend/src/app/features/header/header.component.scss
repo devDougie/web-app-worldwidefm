@@ -1,0 +1,42 @@
+.header {
+    grid-area: header;
+    background: var(--header-bg, #141720);
+    border-bottom: 0.5px solid var(--border, rgba(255, 255, 255, 0.07));
+    display: flex;
+    align-items: center;
+    padding: 0 16px;
+    gap: 10px;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.logo-icon {
+    width: 24px;
+    height: 24px;
+    color: #4fc3f7;
+}
+
+.logo-text {
+    font-size: 14px;
+    font-weight: 700;
+    color: #4fc3f7;
+    letter-spacing: 0.3px;
+}
+
+.header-sep {
+    flex: 1;
+}
+
+.header-badge {
+    font-size: 10px;
+    background: rgba(79, 195, 247, 0.1);
+    color: #4fc3f7;
+    border: 0.5px solid rgba(79, 195, 247, 0.25);
+    border-radius: 20px;
+    padding: 3px 10px;
+    letter-spacing: 0.05em;
+}
