@@ -1,5 +1,14 @@
 <aside class="sidebar">
-    <app-radio-info />
-    <div class="divider"></div>
-    <app-favorites (navigateTo)="onNavigate($event)" />
+    <div class="sidebar-tabs">
+        <div class="tab" [class.active]="activeTab === 'info'" (click)="activeTab = 'info'">Info</div>
+        <div class="tab" [class.active]="activeTab === 'favorites'" (click)="activeTab = 'favorites'">Favorites</div>
+    </div>
+
+    <div class="tab-content" [class.active]="activeTab === 'info'">
+        <app-radio-info />
+    </div>
+
+    <div class="tab-content" [class.active]="activeTab === 'favorites'">
+        <app-favorites (navigateTo)="onNavigate($event)" />
+    </div>
 </aside>

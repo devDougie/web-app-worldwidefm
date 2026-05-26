@@ -13,6 +13,7 @@ import { Radio } from '../../shared/models/radio.model';
 
 export class SidebarComponent {
     readonly navigateTo = output<Radio>();
+    activeTab: 'info' | 'favorites' = 'info';
 
     onNavigate(radio: Radio): void {
         this.navigateTo.emit(radio);

@@ -1,19 +1,24 @@
 <div class="favorites-panel">
-    <h3 class="section-title">Favoritos <span class="count">{{ favorites.count() }}</span></h3>
-
     @if (favorites.favorites().length === 0) {
-    <p class="empty">Nenhuma rádio favoritada ainda.</p>
+    <div class="empty-fav">
+        <p>Nenhuma rádio favoritada ainda.</p>
+        <p class="empty-hint">Pressione ★ para adicionar</p>
+    </div>
     } @else {
-    <ul class="fav-list">
+    <div class="stations-list">
         @for (radio of favorites.favorites(); track radio.stationuuid) {
-        <li class="fav-item" [class.active]="audio.currentRadio()?.stationuuid === radio.stationuuid">
-            <button class="fav-play" (click)="playAndNavigate(radio)">
-                <span class="fav-name">{{ radio.name }}</span>
-                <span class="fav-country">{{ radio.country }}</span>
-            </button>
-            <button class="fav-remove" (click)="favorites.toggle(radio)" title="Remover">✕</button>
-        </li>
+        <div class="fav-item" [class.active]="audio.currentRadio()?.stationuuid === radio.stationuuid"
+            (click)="playAndNavigate(radio)">
+            <span class="fav-star">★</span>
+            <div class="station-info">
+                <div class="station-name">{{ radio.name }}</div>
+                <div class="station-country">{{ radio.country }}</div>
+            </div>
+            <button class="fav-remove" (click)="$event.stopPropagation(); favorites.toggle(radio)"
+                title="Remover">✕</button>
+        </div>
         }
-    </ul>
+        <div class="fav-count">{{ favorites.count() }} saved stations</div>
+    </div>
     }
 </div>

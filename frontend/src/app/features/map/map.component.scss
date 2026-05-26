@@ -1,11 +1,7 @@
 :host {
   grid-area: map;
   display: block;
-}
-
-#map {
-  width: 100%;
-  height: 100%;
+  position: relative;
 }
 
 :host ::ng-deep .leaflet-tile {
@@ -13,5 +9,109 @@
     invert(1) hue-rotate(215deg) brightness(0.75) contrast(1);
 }
 
-// #0d0f17
-// #1c1f2e
+:host ::ng-deep .leaflet-bar a {
+  background-color: var(--accent) !important;
+  border-bottom: 1px solid black !important;
+  color: black !important;
+}
+
+:host ::ng-deep .leaflet-bar a:hover,
+:host ::ng-deep .leaflet-bar a:focus {
+  background-color: #f4f4f4 !important;
+}
+
+:host ::ng-deep .leaflet-bar a.leaflet-disabled {
+  background-color: var(--muted) !important;
+}
+
+:host ::ng-deep .marker-cluster-small,
+:host ::ng-deep .marker-cluster-medium,
+:host ::ng-deep .marker-cluster-large,
+:host ::ng-deep .leaflet-oldie .marker-cluster-small,
+:host ::ng-deep .leaflet-oldie .marker-cluster-medium,
+:host ::ng-deep .leaflet-oldie .marker-cluster-large {
+  background-color: #81d4fa !important;
+}
+
+:host ::ng-deep .marker-cluster-small div,
+:host ::ng-deep .marker-cluster-medium div,
+:host ::ng-deep .marker-cluster-large div,
+:host ::ng-deep .leaflet-oldie .marker-cluster-small div,
+:host ::ng-deep .leaflet-oldie .marker-cluster-medium div,
+:host ::ng-deep .leaflet-oldie .marker-cluster-large div {
+  background-color: #4fc3f7 !important;
+}
+
+:host ::ng-deep .leaflet-control-reset {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 26px;
+    height: 26px;
+    font-size: 18px;
+    font-weight: bold;
+    background-color: var(--accent) !important;
+    color: black !important;
+    text-decoration: none;
+    border-radius: 4px;
+}
+
+:host ::ng-deep .leaflet-control-reset:hover {
+    background-color: #f4f4f4 !important;
+}
+
+:host ::ng-deep .leaflet-control-reset:focus,
+:host ::ng-deep .leaflet-control-reset:active,
+:host ::ng-deep .leaflet-control-reset:focus-visible {
+    background-color: var(--accent) !important;
+    outline: none !important;
+    box-shadow: none !important;
+}
+
+#map {
+  width: 100%;
+  height: 100%;
+  background: #1B2841;
+}
+
+.map-loading-overlay {
+  position: absolute;
+  inset: 0;
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  background: rgba(13, 15, 23, 0.25);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  pointer-events: none;
+}
+
+.map-loading-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+
+.map-loading-spinner {
+  width: 40px;
+  height: 40px;
+  border: 2px solid rgba(79, 195, 247, 0.2);
+  border-top-color: #4fc3f7;
+  border-radius: 50%;
+  animation: spin 0.9s linear infinite;
+}
+
+.map-loading-text {
+  font-family: 'Space Mono', monospace;
+  font-size: 13px;
+  color: #4fc3f7;
+  letter-spacing: 1px;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}

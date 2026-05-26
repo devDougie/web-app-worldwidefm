@@ -16,7 +16,6 @@ export class FavoritesComponent {
     protected favorites = inject(FavoritesService);
     protected audio = inject(AudioService);
 
-    // EventEmitter para notificar o mapa para navegar até a rádio
     readonly navigateTo = output<Radio>();
 
     playAndNavigate(radio: Radio): void {

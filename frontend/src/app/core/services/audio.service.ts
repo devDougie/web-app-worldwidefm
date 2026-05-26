@@ -12,12 +12,14 @@ export class AudioService {
   private _isLoading = signal<boolean>(false);
   private _hasError = signal<boolean>(false);
   private _volume = signal<number>(0.8);
+  private _isMixedContent = signal<boolean>(false);
 
   readonly currentRadio = this._currentRadio.asReadonly();
   readonly isPlaying = this._isPlaying.asReadonly();
   readonly isLoading = this._isLoading.asReadonly();
   readonly hasError = this._hasError.asReadonly();
   readonly volume = this._volume.asReadonly();
+  readonly isMixedContent = this._isMixedContent.asReadonly();
 
   constructor() {
     this.audio.volume = this._volume();
@@ -52,6 +54,9 @@ export class AudioService {
       }
       return;
     }
+
+    const isMixed = radio.urlResolved?.startsWith('http://');
+    this._isMixedContent.set(isMixed);
 
     this.audio.pause();
     this._currentRadio.set(radio);

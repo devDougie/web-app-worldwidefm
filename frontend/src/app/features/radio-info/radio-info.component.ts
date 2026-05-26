@@ -14,4 +14,10 @@ import { CommonModule } from '@angular/common';
 export class RadioInfoComponent {
     protected audio = inject(AudioService);
     protected favorites = inject(FavoritesService);
+
+    getTags(): string[] {
+        const tags = this.audio.currentRadio()?.tags;
+        if (!tags) return [];
+        return tags.split(',').map(t => t.trim()).filter(Boolean).slice(0, 6);
+    }
 }

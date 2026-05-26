@@ -6,11 +6,10 @@
 .app-layout {
   display: grid;
   height: 100vh;
-  grid-template-rows: 52px 1fr 72px;
-  grid-template-columns: 1fr 300px;
+  grid-template-rows: 76px 1fr;
+  grid-template-columns: 1fr 360px;
   grid-template-areas:
     "header header"
-    "map sidebar"
-    "player player";
+    "map    sidebar";
   overflow: hidden;
 }

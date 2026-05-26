@@ -1,1 +1,10 @@
 <div id="map"></div>
+
+@if (isLoading()) {
+<div class="map-loading-overlay">
+    <div class="map-loading-content">
+        <div class="map-loading-spinner"></div>
+        <span class="map-loading-text">Loading radios...</span>
+    </div>
+</div>
+}

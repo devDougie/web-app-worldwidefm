@@ -1,41 +1,101 @@
 <div class="info-panel">
     @if (audio.currentRadio()) {
     <div class="radio-detail">
-        <div class="radio-cover">
-            @if (audio.currentRadio()?.favicon) {
-            <img [src]="audio.currentRadio()?.favicon" [alt]="audio.currentRadio()?.name"
-                (error)="$any($event.target).style.display='none'" />
-            }
-        </div>
 
-        <div class="radio-meta">
-            <h2 class="radio-name">{{ audio.currentRadio()?.name || '—' }}</h2>
-            <p class="radio-country">{{ audio.currentRadio()?.country || '—' }}</p>
-            @if (audio.currentRadio()?.city) {
-            <p class="radio-city">{{ audio.currentRadio()?.city }}</p>
-            }
-            @if (audio.currentRadio()?.tags) {
-            <p class="radio-tags">{{ audio.currentRadio()?.tags }}</p>
-            }
-            <div class="radio-specs">
-                @if (audio.currentRadio()?.codec) {
-                <span class="badge">{{ audio.currentRadio()?.codec }}</span>
+        <div class="radio-info-header">
+            <div class="radio-cover">
+                @if (audio.currentRadio()?.favicon) {
+                <img class="player-favicon" [src]="audio.currentRadio()?.favicon" [alt]="audio.currentRadio()?.name"
+                    (error)="$any($event.target).style.display='none'" />
+                } @else {
+                <span class="radio-avatar-icon">📻</span>
                 }
-                @if (audio.currentRadio()?.bitrate) {
-                <span class="badge">{{ audio.currentRadio()?.bitrate }} kbps</span>
+            </div>
+            <div class="radio-header-text">
+                <div class="radio-name">
+                    {{ audio.currentRadio()?.name || '—' }}
+                </div>
+                <div class="radio-meta-loc">
+                    {{ audio.currentRadio()?.city ? audio.currentRadio()?.city + ' · ' : '' }}{{
+                        audio.currentRadio()?.country || '—' }}
+                </div>
+
+                @if (audio.isPlaying()) {
+                <span class="info-badge live">
+                    <span class="badge-icon badge-pulse">🔴</span> LIVE
+                </span>
+                }
+                @if (audio.hasError()) {
+                <span class="info-badge error">
+                    <span class="badge-icon badge-fade">🚫</span> Unavailable
+                </span>
+                }
+                @if (audio.isLoading()) {
+                <span class="info-badge loading">
+                    <span class="badge-icon badge-spin">⏳</span> Connecting...
+                </span>
+                }
+                @if (audio.isMixedContent() && !audio.isPlaying()) {
+                <span class="info-badge mixed">
+                    <span class="badge-icon badge-shake">⚠️</span> HTTP
+                </span>
                 }
             </div>
         </div>
 
-        <button class="fav-btn" [class.is-fav]="favorites.isFavorite(audio.currentRadio()!.stationuuid)"
-            (click)="favorites.toggle(audio.currentRadio()!)"
-            [title]="favorites.isFavorite(audio.currentRadio()!.stationuuid) ? 'Remover dos favoritos' : 'Adicionar aos favoritos'">
-            {{ favorites.isFavorite(audio.currentRadio()!.stationuuid) ? '★' : '☆' }}
-        </button>
+        @if (audio.currentRadio()?.tags) {
+        <div class="radio-tags">
+            @for (tag of getTags(); track tag) {
+            <span class="tag">{{ tag }}</span>
+            }
+        </div>
+        }
+
+        <div class="radio-stats">
+            <div class="stat-box stat-box-country">
+                <div class="stat-label">COUNTRY</div>
+                <div class="stat-val">{{ audio.currentRadio()?.country || '—' }}</div>
+            </div>
+            <div class="stat-box stat-box-coords">
+                <div class="stat-label">COORDINATES</div>
+                <div class="coords-inner">
+                    <div class="coord-item">
+                        <div class="coord-label">LAT</div>
+                        <div class="coord-val">{{ audio.currentRadio()?.latitude +'°' || '—' }}</div>
+                    </div>
+                    <div class="coord-sep"></div>
+                    <div class="coord-item">
+                        <div class="coord-label">LNG</div>
+                        <div class="coord-val">{{ audio.currentRadio()?.longitude +'°' || '—' }}</div>
+                    </div>
+                </div>
+            </div>
+            <div class="stat-box stat-box-bitrate">
+                <div class="stat-label">BITRATE</div>
+                <div class="stat-val">{{ audio.currentRadio()?.bitrate || '—' }} kbps</div>
+            </div>
+            <div class="stat-box stat-box-codec">
+                <div class="stat-label">CODEC</div>
+                <div class="stat-val">{{ audio.currentRadio()?.codec || '—' }}</div>
+            </div>
+        </div>
+
+        <div class="action-btns">
+            <button class="btn-play" (click)="audio.isPlaying() ? audio.pause() : audio.resume()">
+                <span>{{ audio.isPlaying() ? '⏸' : '▶' }}</span>
+                {{ audio.isPlaying() ? 'Pause' : 'Play' }}
+            </button>
+            <button class="btn-fav" [class.is-fav]="favorites.isFavorite(audio.currentRadio()!.stationuuid)"
+                (click)="favorites.toggle(audio.currentRadio()!)"
+                [title]="favorites.isFavorite(audio.currentRadio()!.stationuuid) ? 'Remover dos favoritos' : 'Adicionar aos favoritos'">
+                {{ favorites.isFavorite(audio.currentRadio()!.stationuuid) ? '★' : '☆' }}
+            </button>
+        </div>
     </div>
     } @else {
     <div class="empty-state">
-        <p>Clique em uma antena no mapa para ouvir uma rádio</p>
+        <div class="empty-icon">📻</div>
+        <p>Click on an antenna on the map to listen to a radio station.</p>
     </div>
     }
 </div>
