@@ -244,7 +244,8 @@ Este projeto foi desenvolvido em 8 fases para praticar progressivamente:
 - ✅ Containerização fullstack com Docker multi-stage build e Docker Compose
 
 ---
-
+<!--
 ## 📄 Licença
 
 Projeto de uso livre para fins de estudo e portfólio.
+-->
