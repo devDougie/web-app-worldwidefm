@@ -36,6 +36,7 @@
 
 .radio-avatar-icon {
     font-size: 18px;
+    opacity: 0.3;
 }
 
 .radio-header-text {
@@ -265,6 +266,27 @@
         font-size: 28px;
         margin-bottom: 10px;
         opacity: 0.5;
+    }
+}
+
+.stat-box-homepage {
+    grid-column: span 2;
+}
+
+.homepage-link {
+    display: block;
+    font-size: 12px;
+    color: var(--accent);
+    margin-top: 2px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    text-decoration: none;
+    transition: opacity 0.15s;
+
+    &:hover {
+        opacity: 0.75;
+        text-decoration: underline;
     }
 }
 

@@ -13,6 +13,7 @@ export class AudioService {
   private _hasError = signal<boolean>(false);
   private _volume = signal<number>(0.8);
   private _isMixedContent = signal<boolean>(false);
+  private _isMuted = signal<boolean>(false);
 
   readonly currentRadio = this._currentRadio.asReadonly();
   readonly isPlaying = this._isPlaying.asReadonly();
@@ -20,6 +21,7 @@ export class AudioService {
   readonly hasError = this._hasError.asReadonly();
   readonly volume = this._volume.asReadonly();
   readonly isMixedContent = this._isMixedContent.asReadonly();
+  readonly isMuted = this._isMuted.asReadonly();
 
   constructor() {
     this.audio.volume = this._volume();
@@ -83,5 +85,11 @@ export class AudioService {
     const clamped = Math.max(0, Math.min(1, value));
     this._volume.set(clamped);
     this.audio.volume = clamped;
+  }
+
+  toggleMute(): void {
+    const muted = !this._isMuted();
+    this._isMuted.set(muted);
+    this.audio.muted = muted;
   }
 }

@@ -3,6 +3,8 @@ export interface Radio {
   name: string;
   country: string;
   city: string;
+  state: string;
+  homepage: string;
   tags: string;
   urlResolved: string;
   latitude: number;

@@ -16,6 +16,7 @@ public class Radio {
     private String city;
     private String tags;
     private String url;
+    private String homepage;
 
     @JsonProperty("url_resolved")
     private String urlResolved;

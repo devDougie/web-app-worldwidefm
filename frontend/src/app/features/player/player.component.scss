@@ -58,6 +58,7 @@
     height: 100%;
     align-items: center;
     justify-content: center;
+    opacity: 0.3;
 }
 
 .player-text {
@@ -254,4 +255,8 @@
 .vol-wrap:active .vol-tooltip,
 .vol-slider:active~.vol-tooltip {
     opacity: 1;
+}
+
+.vol-slider.muted {
+    accent-color: var(--muted);
 }

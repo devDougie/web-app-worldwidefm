@@ -25,7 +25,7 @@ public class RadioBrowserClient {
         Map<String, Object> body = Map.of(
                 "has_geo_info", true,
                 "hidebroken", true,
-                "limit", 10100,
+                "limit", 20000,
                 "offset", 0
         );
 

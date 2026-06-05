@@ -5,8 +5,22 @@
         <p class="empty-hint">Pressione ★ para adicionar</p>
     </div>
     } @else {
+    <div class="search-box">
+        <input
+            type="text"
+            class="search-input"
+            placeholder="🔎 Search favorites..."
+            [value]="searchQuery()"
+            (input)="searchQuery.set($any($event.target).value)"
+        />
+    </div>
     <div class="stations-list">
-        @for (radio of favorites.favorites(); track radio.stationuuid) {
+        @if (filteredFavorites().length === 0) {
+        <div class="empty-fav">
+            <p>No results for "{{ searchQuery() }}"</p>
+        </div>
+        }
+        @for (radio of filteredFavorites(); track radio.stationuuid) {
         <div class="fav-item" [class.active]="audio.currentRadio()?.stationuuid === radio.stationuuid"
             (click)="playAndNavigate(radio)">
             <span class="fav-star">★</span>

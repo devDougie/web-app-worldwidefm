@@ -16,8 +16,8 @@
                     {{ audio.currentRadio()?.name || '—' }}
                 </div>
                 <div class="radio-meta-loc">
-                    {{ audio.currentRadio()?.city ? audio.currentRadio()?.city + ' · ' : '' }}{{
-                        audio.currentRadio()?.country || '—' }}
+                    {{ audio.currentRadio()?.state ? audio.currentRadio()?.state + ' · ' : '' }}{{
+                    audio.currentRadio()?.country || '—' }}
                 </div>
 
                 @if (audio.isPlaying()) {
@@ -53,20 +53,29 @@
 
         <div class="radio-stats">
             <div class="stat-box stat-box-country">
-                <div class="stat-label">COUNTRY</div>
-                <div class="stat-val">{{ audio.currentRadio()?.country || '—' }}</div>
+                <div class="coords-inner">
+                    <div class="coord-item">
+                        <div class="coord-label">COUNTRY</div>
+                        <div class="coord-val">{{ audio.currentRadio()?.country || '—' }}</div>
+                    </div>
+                    <div class="coord-sep"></div>
+                    <div class="coord-item">
+                        <div class="coord-label">STATE</div>
+                        <div class="coord-val">{{ audio.currentRadio()?.state || '—' }}</div>
+                    </div>
+                </div>
             </div>
             <div class="stat-box stat-box-coords">
                 <div class="stat-label">COORDINATES</div>
                 <div class="coords-inner">
                     <div class="coord-item">
                         <div class="coord-label">LAT</div>
-                        <div class="coord-val">{{ audio.currentRadio()?.latitude +'°' || '—' }}</div>
+                        <div class="coord-val">{{ (audio.currentRadio()?.latitude | number:'1.4-4') || '—' }}°</div>
                     </div>
                     <div class="coord-sep"></div>
                     <div class="coord-item">
                         <div class="coord-label">LNG</div>
-                        <div class="coord-val">{{ audio.currentRadio()?.longitude +'°' || '—' }}</div>
+                        <div class="coord-val">{{ (audio.currentRadio()?.longitude | number:'1.4-4') || '—' }}°</div>
                     </div>
                 </div>
             </div>
@@ -78,6 +87,15 @@
                 <div class="stat-label">CODEC</div>
                 <div class="stat-val">{{ audio.currentRadio()?.codec || '—' }}</div>
             </div>
+            @if (audio.currentRadio()?.homepage) {
+            <div class="stat-box stat-box-homepage">
+                <div class="stat-label">HOMEPAGE</div>
+                <a class="homepage-link" [href]="audio.currentRadio()?.homepage" target="_blank"
+                    rel="noopener noreferrer">
+                    {{ audio.currentRadio()?.homepage }}
+                </a>
+            </div>
+            }
         </div>
 
         <div class="action-btns">

@@ -10,6 +10,8 @@ public class RadioResponseDTO {
     private String name;
     private String country;
     private String city;
+    private String state;
+    private String homepage;
     private String tags;
     private String urlResolved;
     private Double latitude;
@@ -24,6 +26,8 @@ public class RadioResponseDTO {
         dto.setName(radio.getName());
         dto.setCountry(radio.getCountry());
         dto.setCity(radio.getCity());
+        dto.setState(radio.getState());
+        dto.setHomepage(radio.getHomepage());
         dto.setTags(radio.getTags());
         dto.setUrlResolved(radio.getUrlResolved());
         dto.setLatitude(radio.getLatitude());
