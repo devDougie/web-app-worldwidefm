@@ -127,7 +127,7 @@ Ambos se comunicam via rede interna `worldwidefm-net`. O build é multi-stage �
 ### Pré-requisitos
 
 - [Docker Desktop](https://www.docker.com/products/docker-desktop/) instalado e **em execução**
-- Git instalado
+- [Git](https://git-scm.com/install/windows) instalado
 
 > ✅ **Não é necessário ter Java, Maven, Node.js ou npm instalados na máquina.** O Docker cuida de tudo isso durante o build.
 
@@ -165,18 +165,18 @@ Na primeira execução isso pode demorar alguns minutos — o Maven baixa as dep
     <tr>
       <td align="center" colspan="2">
         <b>Mapa interativo com clusters de rádios</b><br>
-        <img src="https://github.com/user-attachments/assets/d1aab952-f77d-4cd4-bc8d-7bfbb7e6151b" width="1000">
+        <img src="https://github.com/user-attachments/assets/d1aab952-f77d-4cd4-bc8d-7bfbb7e6151b">
       </td>
     </tr>
     <!-- Segunda linha: As duas imagens lado a lado -->
     <tr>
       <td align="center">
         <b>Painel lateral - Aba de informações da rádio</b><br>
-        <img src="https://github.com/user-attachments/assets/399bb670-5e06-432e-9292-07d4c34c785f" width="400">
+        <img src="https://github.com/user-attachments/assets/399bb670-5e06-432e-9292-07d4c34c785f">
       </td>
       <td align="center">
         <b>Painel lateral - Aba de lista das rádios favoritas</b><br>
-        <img src="https://github.com/user-attachments/assets/4bb8a5bb-f5fe-4f88-b7fa-b8e31c959722" width="400">
+        <img src="https://github.com/user-attachments/assets/4bb8a5bb-f5fe-4f88-b7fa-b8e31c959722">
       </td>
     </tr>
   </table>
