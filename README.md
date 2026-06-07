@@ -2,6 +2,11 @@
 
 > Projeto de aprendizado e portfólio — Web rádio global com mapa interativo, construída com Java 17, Spring Boot 3 e Angular 21.
 
+<div align="center">
+<img src="https://github.com/user-attachments/assets/e3af3bd7-5a07-43d5-a558-a6c7495c5cff">
+</div>
+<br>
+
 Este projeto foi desenvolvido em fases com o objetivo de praticar um conjunto de tecnologias do ecossistema Java/Spring e Angular em um contexto realista: uma aplicação fullstack que consome uma API pública de rádios do mundo inteiro, exibe os resultados em um mapa interativo e permite reproduzir os streams de áudio diretamente no navegador.
 
 **Não se trata de um sistema pronto para produção**, mas de um projeto estruturado para aprendizado e portfólio.
@@ -154,23 +159,28 @@ Na primeira execução isso pode demorar alguns minutos — o Maven baixa as dep
 
 ## 📺 Demonstração
 
-> 💡 **Como adicionar os GIFs:** grave cada interação com o [ScreenToGif](https://www.screentogif.com/) (gratuito), salve os arquivos na pasta `docs/` na raiz do projeto e substitua os blocos abaixo pela sintaxe `![descrição](docs/nome-do-arquivo.gif)`.
-
-**Mapa interativo com clusters de rádios**
-
-<!-- ![Mapa interativo](docs/mapa.gif) -->
-
-**Player de áudio tocando uma rádio**
-
-<!-- ![Player de áudio](docs/player.gif) -->
-
-**Painel lateral e busca de rádios**
-
-<!-- ![Painel lateral](docs/sidebar.gif) -->
-
-**Adicionando e removendo favoritos**
-
-<!-- ![Favoritos](docs/favoritos.gif) -->
+<div align="center">
+  <table>
+    <!-- Primeira linha: Ocupa as 2 colunas -->
+    <tr>
+      <td align="center" colspan="2">
+        <b>Mapa interativo com clusters de rádios</b><br>
+        <img src="https://github.com/user-attachments/assets/d1aab952-f77d-4cd4-bc8d-7bfbb7e6151b" width="1000">
+      </td>
+    </tr>
+    <!-- Segunda linha: As duas imagens lado a lado -->
+    <tr>
+      <td align="center">
+        <b>Painel lateral - Aba de informações da rádio</b><br>
+        <img src="https://github.com/user-attachments/assets/399bb670-5e06-432e-9292-07d4c34c785f" width="400">
+      </td>
+      <td align="center">
+        <b>Painel lateral - Aba de lista das rádios favoritas</b><br>
+        <img src="https://github.com/user-attachments/assets/4bb8a5bb-f5fe-4f88-b7fa-b8e31c959722" width="400">
+      </td>
+    </tr>
+  </table>
+</div>
 
 ---
 
