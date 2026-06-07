@@ -230,7 +230,7 @@ ng serve
 
 ## 🎯 Objetivos de aprendizado
 
-Este projeto foi desenvolvido em 8 fases para praticar progressivamente:
+Este projeto foi desenvolvido em fases para praticar progressivamente:
 
 - ✅ Estrutura de projeto Spring Boot com Maven
 - ✅ Consumo de API externa com WebClient (reativo)
@@ -242,6 +242,7 @@ Este projeto foi desenvolvido em 8 fases para praticar progressivamente:
 - ✅ Painel lateral, busca e favoritos com localStorage
 - ✅ UX e polish (loading states, responsividade, animações)
 - ✅ Containerização fullstack com Docker multi-stage build e Docker Compose
+- ✅ Melhorias de UI/UX, novos campos de dados e refinamentos do player
 
 ---
 <!--
